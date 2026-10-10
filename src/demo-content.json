@@ -1,0 +1,160 @@
+[
+  {
+    "prompt": "Quelle hauteur fait une feuille A4 ?",
+    "expected": 29.7,
+    "target": "Feuille A4",
+    "shape": "paper",
+    "aspect": 0.707,
+    "reference": "Carré de 10 cm",
+    "reference_cm": 10,
+    "reference_shape": "paper",
+    "reference_aspect": 1,
+    "unit": "cm",
+    "source": "https://www.adobe.com/uk/creativecloud/design/discover/a4-format.html",
+    "type": "size",
+    "id": "demo-size"
+  },
+  {
+    "prompt": "Quel petit monstre jaune dit son propre nom et lance des éclairs ?",
+    "expected": [
+      "pikachu"
+    ],
+    "reward": 2,
+    "theme": "Pop culture",
+    "type": "culture",
+    "id": "demo-culture"
+  },
+  {
+    "prompt": "Arrête ton chrono au plus près de 5 secondes.",
+    "expected": 5000,
+    "target_ms": 5000,
+    "type": "timing",
+    "id": "demo-timing"
+  },
+  {
+    "prompt": "Quel film raconte cette ligne d’émojis ?",
+    "expected": [
+      "le monde de nemo",
+      "monde de nemo",
+      "nemo",
+      "finding nemo"
+    ],
+    "clue": "🐠 🌊 🔎",
+    "reward": 2,
+    "type": "emoji",
+    "id": "demo-emoji"
+  },
+  {
+    "prompt": "Classe ces nombres du plus petit au plus grand.",
+    "options": [
+      "12",
+      "3",
+      "21",
+      "7"
+    ],
+    "expected": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "type": "order",
+    "id": "demo-order"
+  },
+  {
+    "prompt": "Le meilleur endroit pour un jeu de soirée ?",
+    "options": [
+      "Le canapé",
+      "La cuisine",
+      "La terrasse",
+      "Partout avec les bons potes"
+    ],
+    "expected": null,
+    "type": "majority",
+    "id": "demo-majority"
+  },
+  {
+    "prompt": "Un animal qui commence par L.",
+    "expected": [
+      "lion",
+      "loup",
+      "lapin",
+      "loutre",
+      "lynx",
+      "leopard",
+      "lama",
+      "libellule",
+      "lezard",
+      "limace",
+      "langouste",
+      "langoustine",
+      "loir",
+      "lemurien"
+    ],
+    "letter": "L",
+    "theme": "Animal",
+    "reward": 3,
+    "type": "petitbac",
+    "id": "demo-petitbac"
+  },
+  {
+    "prompt": "Deux sons se cachent dans un mot. Lequel ?",
+    "expected": [
+      "bateau"
+    ],
+    "clue": "BAS + TAUX",
+    "reward": 2,
+    "type": "rebus",
+    "id": "demo-rebus"
+  },
+  {
+    "prompt": "Trois de ces nombres sont pairs. Trouve l’intrus.",
+    "options": [
+      "8",
+      "12",
+      "15",
+      "20"
+    ],
+    "expected": 2,
+    "type": "odd",
+    "id": "demo-odd"
+  },
+  {
+    "prompt": "Retrouve les cinq fruits dans le bon ordre.",
+    "expected": [
+      0,
+      2,
+      1,
+      4,
+      3
+    ],
+    "sequence": [
+      0,
+      2,
+      1,
+      4,
+      3
+    ],
+    "type": "memory",
+    "id": "demo-memory"
+  },
+  {
+    "prompt": "Combien de mois y a-t-il dans trois années ?",
+    "expected": 36,
+    "unit": "mois",
+    "type": "estimate",
+    "id": "demo-estimate"
+  },
+  {
+    "prompt": "De quelle couleur est le chapeau de Luigi ?",
+    "options": [
+      "Rouge",
+      "Vert",
+      "Bleu",
+      "Jaune"
+    ],
+    "expected": 1,
+    "type": "quiz",
+    "id": "demo-quiz"
+  }
+]
