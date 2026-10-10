@@ -76,7 +76,7 @@ export function newDemo(name = 'Toi', avatar = 0, rounds = 8, games = Object.key
     id: `demo-${crypto.randomUUID()}`, revision: 0, code: 'DÉMO', host_id: 'you', viewer_id: 'you', viewer_role: 'player',
     status: 'lobby', round: 0, total_rounds: rounds, challenge: null, games, deck: makeDeck(games, rounds, random), board_log: [],
     players: [{ id: 'you', name, avatar }, { id: 'lea', name: 'Léa', avatar: 1 }, { id: 'sam', name: 'Sam', avatar: 2 }, { id: 'alex', name: 'Alex', avatar: 3 }].map(p => ({ ...p, score: 0, position: 0, coins: 3, stars: 0, shield: false, stance: 'chill' })),
-    submitted: [], results: [],
+    submitted: [], results: [], history: [],
   };
 }
 
@@ -105,7 +105,8 @@ function botAnswer(challenge, index) {
 export function resolveDemo(room) {
   if (!['review', 'playing'].includes(room.status)) return room;
   const board = room.players.map(player => resolveBoard(player, room.results.find(r => r.id === player.id)?.points || 0, room.round));
-  return { ...room, status: room.round === room.total_rounds ? 'finished' : 'results', players: board.map(b => b.player), board_log: board.map(b => b.log) };
+  const history = [...(room.history || []).filter(entry => entry.round !== room.round), { round: room.round, challenge: structuredClone(room.challenge), results: structuredClone(room.results) }];
+  return { ...room, status: room.round === room.total_rounds ? 'finished' : 'results', players: board.map(b => b.player), board_log: board.map(b => b.log), history };
 }
 
 export function finishDemo(room, now = Date.now()) {
@@ -129,7 +130,7 @@ export function stanceDemo(room, stance) {
 }
 
 export function formatAnswer(challenge, answer) {
-  if (answer == null) return challenge.type === 'majority' ? 'Le choix de la bande !' : 'Pas de réponse';
+  if (answer == null) return 'Pas de réponse';
   if (GAMES[challenge.type]?.review) return Array.isArray(answer) ? answer[0] : answer;
   if (['quiz', 'odd', 'majority'].includes(challenge.type)) return challenge.options[answer];
   if (challenge.type === 'memory') return answer.map(n => SYMBOLS[n]).join(' ');

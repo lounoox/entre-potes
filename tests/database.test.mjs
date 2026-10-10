@@ -23,6 +23,7 @@ before(async () => {
   await db.exec(await readFile(new URL('../supabase/001_party.sql', import.meta.url), 'utf8'));
   await db.exec(await readFile(new URL('../supabase/002_party_expansion.sql', import.meta.url), 'utf8'));
   await db.exec(await readFile(new URL('../supabase/003_content.sql', import.meta.url), 'utf8'));
+  await db.exec(await readFile(new URL('../supabase/004_answer_history.sql', import.meta.url), 'utf8'));
 });
 after(async () => { await db?.close(); });
 
@@ -199,4 +200,47 @@ test('sélections et stratégies invalides sont refusées, catalogue et ancienne
   await assert.rejects(rpc(host, 'stance', { stance: 'chill' }), /avant/);
   await assert.rejects(db.query('select * from public.ep_catalog'), /permission denied/);
   await assert.rejects(db.query("select public.ep_action_v1('get',$1,'{}')",[room.code]), /permission denied/);
+});
+
+
+test('le carnet final conserve questions, réponses et corrections, et reste privé pendant le jeu', async () => {
+  await admin("update public.ep_rooms set expires_at=clock_timestamp()-interval '1 day'");
+  room=await rpc(host,'create',{name:'Louis',avatar:0,rounds:4,games:['culture']});
+  await rpc(friend,'join',{name:'Léa',avatar:1});
+  await rpc(screen,'join',{name:'Écran',avatar:0,spectator:true});
+  const questions=[];
+  for(let round=1;round<=4;round++) {
+    room=await rpc(host,'start');
+    questions.push(room.challenge.prompt);
+    assert.deepEqual(room.history,[]);
+    assert.deepEqual((await rpc(screen,'get')).history,[]);
+    assert.equal(room.challenge.expected,undefined);
+    await openWindow();
+    await rpc(host,'answer',{answer:'Ma proposition '+round});
+    if(round!==2) await rpc(friend,'answer',{answer:'La proposition de Léa '+round});
+    await admin("update public.ep_rooms set ends_at=clock_timestamp()-interval '1 second' where id=$1",[room.id]);
+    room=await rpc(host,'finish');
+    assert.equal(room.status,'review');
+    assert.deepEqual(room.history,[]);
+    await rpc(host,'review',{player_id:host,points:1});
+    room=await rpc(host,'resolve');
+    if(round<4) assert.deepEqual(room.history,[]);
+  }
+  assert.equal(room.status,'finished');
+  assert.deepEqual(room.history.map(h=>h.round),[1,2,3,4]);
+  assert.deepEqual(room.history.map(h=>h.challenge.prompt),questions);
+  for(const entry of room.history) {
+    assert.ok(entry.challenge.expected);
+    assert.equal(entry.results.find(r=>r.id===host).answer,'Ma proposition '+entry.round);
+    assert.equal(entry.results.find(r=>r.id===host).points,1);
+  }
+  assert.equal(room.history[1].results.find(r=>r.id===friend),undefined);
+  assert.deepEqual((await rpc(screen,'get')).history,room.history);
+  assert.deepEqual((await rpc(host,'resolve')).history,room.history);
+  await assert.rejects(rpc(outsider,'get'),/Rejoins/);
+  await assert.rejects(db.query('select * from public.ep_rounds'),/permission denied/);
+  const history=structuredClone(room.history);
+  await admin('delete from public.ep_rounds where room_id=$1',[room.id]);
+  await db.exec(await readFile(new URL('../supabase/004_answer_history.sql',import.meta.url),'utf8'));
+  assert.deepEqual((await rpc(host,'get')).history,history,'les parties existantes sont reconstituées');
 });

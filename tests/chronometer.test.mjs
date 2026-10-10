@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import React from 'react';
 
 test('le chrono aveugle ne donne aucun repère périodique au joueur ou au spectateur',async()=>{
-  const vite=await createServer({server:{middlewareMode:true},appType:'custom'});
+  const vite=await createServer({server:{middlewareMode:true,ws:false},appType:'custom'});
   try {
     const {default:MiniGame}=await vite.ssrLoadModule('/src/MiniGame.jsx');
     const start=Date.now();

@@ -41,7 +41,7 @@ npm run build
 
 La sélection est mélangée sans répétition de type avant d’avoir parcouru tous les types sélectionnés. Les questions d’un même type ne sont réutilisées qu’après épuisement de leur banque.
 
-Les réponses libres sont notées automatiquement en ignorant accents, espaces et ponctuation. Elles passent ensuite devant **le tribunal des potes** : l’hôte peut accepter une variante ou une réponse valide absente du dictionnaire. Les déplacements attendent sa validation. Selon la difficulté, ces questions rapportent 1 à 3 points.
+Les réponses libres sont notées automatiquement en ignorant accents, espaces et ponctuation. Elles passent ensuite devant **le tribunal des potes** : l’hôte peut accepter une variante ou une réponse valide absente du dictionnaire. Les déplacements attendent sa validation. Après chaque manche, toutes les réponses et leurs points sont visibles. À la fin de la partie, le carnet de la soirée rassemble toutes les questions, les réponses attendues et les propositions de chaque joueur. Selon la difficulté, ces questions rapportent 1 à 3 points.
 
 Le chrono aveugle n’affiche **aucun décompte, barre de progression, animation périodique ou compteur de réponses**, sur le téléphone comme sur l’écran commun. Le temps mesuré n’apparaît qu’aux résultats. Une limite technique de manche reste active pour éviter un blocage. La mesure se fait sur le téléphone ; ce jeu vise des amis qui jouent loyalement.
 
@@ -67,7 +67,7 @@ Toutes les trois manches, un événement s’annonce : une pièce offerte à cha
 ## Connecter Supabase
 
 1. Créer un projet sur [Supabase](https://supabase.com/).
-2. Dans SQL Editor, exécuter dans cet ordre, **une fois chacun** : `supabase/001_party.sql`, `supabase/002_party_expansion.sql`, puis `supabase/003_content.sql`. Si la version initiale est déjà installée, exécuter seulement 002 puis 003. Faire cette mise à jour entre deux soirées : les règles du plateau changent pour les salons existants.
+2. Dans SQL Editor, exécuter dans cet ordre, **une fois chacun** : `supabase/001_party.sql`, `supabase/002_party_expansion.sql`, puis `supabase/003_content.sql` et `supabase/004_answer_history.sql`. Si la version initiale est déjà installée, exécuter 002, 003 puis 004. Si 001 à 003 sont déjà installés, exécuter seulement 004. Faire cette mise à jour entre deux soirées : les règles du plateau changent pour les salons existants.
 3. Activer **Anonymous Sign-Ins** dans Authentication → Sign In / Providers.
 4. Copier `.env.example` en `.env.local` et compléter :
 

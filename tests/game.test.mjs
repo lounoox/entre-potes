@@ -76,3 +76,25 @@ test('les cases produisent de vrais effets, sans cascade ni pièces négatives',
   result=resolveBoard({...p,position:0,stance:'bold'},2,1).player; assert.equal(result.position,5); assert.equal(result.shield,true); assert.equal(result.coins,6);
   assert.ok(comparePlayers({stars:2,coins:0,score:0},{stars:1,coins:30,score:30})<0);
 });
+
+
+test('le carnet garde les réponses de toutes les manches et les corrections sans doublon', () => {
+  const now = Date.now();
+  let room = newDemo('Louis',0,4,['culture']);
+  for (let round=1;round<=4;round++) {
+    room=advanceDemo(room,now);
+    room=answerDemo(room,'Une réponse personnelle '+round,now+10000);
+    room=finishDemo(room,now+11000);
+    assert.equal(room.history.length,round-1,'la correction reste provisoire');
+    room=reviewDemo(room,'you',1);
+    room=resolveDemo(room);
+    assert.equal(room.history.length,round);
+    assert.equal(room.history.at(-1).results.find(r=>r.id==='you').points,1);
+    const archived=room.history.at(-1).results.find(r=>r.id==='you').answer;
+    room.results[0].answer='Mutation du résultat courant';
+    assert.equal(room.history.at(-1).results.find(r=>r.id==='you').answer,archived);
+    assert.equal(resolveDemo(room).history.length,round);
+  }
+  assert.equal(room.status,'finished');
+  assert.deepEqual(room.history.map(h=>h.results.find(r=>r.id==='you').answer),[1,2,3,4].map(n=>'Une réponse personnelle '+n));
+});
