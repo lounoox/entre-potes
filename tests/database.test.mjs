@@ -24,6 +24,7 @@ before(async () => {
   await db.exec(await readFile(new URL('../supabase/002_party_expansion.sql', import.meta.url), 'utf8'));
   await db.exec(await readFile(new URL('../supabase/003_content.sql', import.meta.url), 'utf8'));
   await db.exec(await readFile(new URL('../supabase/004_answer_history.sql', import.meta.url), 'utf8'));
+  await db.exec(await readFile(new URL('../supabase/005_explanations.sql', import.meta.url), 'utf8'));
 });
 after(async () => { await db?.close(); });
 
@@ -242,5 +243,32 @@ test('le carnet final conserve questions, réponses et corrections, et reste pri
   const history=structuredClone(room.history);
   await admin('delete from public.ep_rounds where room_id=$1',[room.id]);
   await db.exec(await readFile(new URL('../supabase/004_answer_history.sql',import.meta.url),'utf8'));
+  await db.exec(await readFile(new URL('../supabase/005_explanations.sql',import.meta.url),'utf8'));
   assert.deepEqual((await rpc(host,'get')).history,history,'les parties existantes sont reconstituées');
+});
+
+
+test('les explications sont masquées pendant le jeu et ajoutées aux anciens résultats',async()=>{
+  await admin("update public.ep_rooms set expires_at=clock_timestamp()-interval '1 day'");
+  room=await rpc(host,'create',{name:'Louis',avatar:0,rounds:4,games:['odd']});
+  await rpc(friend,'join',{name:'Léa',avatar:1});
+  await rpc(screen,'join',{name:'Écran',avatar:0,spectator:true});
+  const question=(await admin("select challenge from public.ep_catalog where id='odd-6'")).rows[0].challenge;
+  const oldQuestion={...question};delete oldQuestion.explanation;
+  await admin('update public.ep_rooms set deck=$1::jsonb where id=$2',[JSON.stringify(Array(4).fill(oldQuestion)),room.id]);
+  for(let round=1;round<=4;round++){
+    room=await rpc(host,'start');
+    assert.equal(room.challenge.explanation,undefined);
+    assert.equal((await rpc(screen,'get')).challenge.explanation,undefined);
+    await openWindow();
+    await rpc(host,'answer',{answer:0});await rpc(friend,'answer',{answer:3});
+    room=await rpc(host,'finish');
+    assert.equal(room.challenge.explanation,question.explanation,'ancienne question enrichie depuis le catalogue');
+  }
+  assert.equal(room.status,'finished');
+  assert.ok(room.history.every(h=>h.challenge.explanation===question.explanation));
+  await assert.rejects(db.query('select public.ep_explained($1::jsonb)',[JSON.stringify(question)]),/permission denied/);
+  await db.exec('reset role');
+  await db.exec(await readFile(new URL('../supabase/005_explanations.sql',import.meta.url),'utf8'));
+  assert.ok((await rpc(host,'get')).history.every(h=>h.challenge.explanation===question.explanation));
 });

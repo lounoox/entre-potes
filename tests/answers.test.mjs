@@ -15,7 +15,7 @@ test('les réponses de tous les jeux se lisent en résultats et au bilan, jamais
       const room={...entry,status:'results',players,viewer_id:'you'};
       const html=renderToStaticMarkup(React.createElement(RoundAnswers,{room}));
       assert.match(html,/Louis/);assert.match(html,/Léa/);assert.match(html,/Sam/);
-      assert.match(html,/Pas de réponse/);assert.match(html,/2 pts/);
+      assert.match(html,/Pas de réponse/);assert.match(html,/2 pts/);assert.match(html,/Pourquoi/);assert.match(html,/answer-feedback/);
       if(GAMES[entry.challenge.type].review) assert.match(html,/&lt;Une variante personnelle&gt;/);
       else assert.ok(html.includes(formatAnswer(entry.challenge,entry.results[0].answer)));
       for(const status of ['playing','review','lobby']) assert.equal(renderToStaticMarkup(React.createElement(RoundAnswers,{room:{...room,status}})),'');

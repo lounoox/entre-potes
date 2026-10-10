@@ -11,6 +11,7 @@
     "reference_aspect": 1,
     "unit": "cm",
     "source": "https://www.adobe.com/uk/creativecloud/design/discover/a4-format.html",
+    "explanation": "Une feuille A4 mesure 21 × 29,7 cm. Face au carré de 10 cm, sa hauteur est donc presque trois fois plus grande.",
     "type": "size",
     "id": "demo-size"
   },
@@ -21,6 +22,7 @@
     ],
     "reward": 2,
     "theme": "Pop culture",
+    "explanation": "Pikachu est le Pokémon jaune de type Électrik, reconnaissable à ses joues rouges et à ses éclairs.",
     "type": "culture",
     "id": "demo-culture"
   },
@@ -28,6 +30,7 @@
     "prompt": "Arrête ton chrono au plus près de 5 secondes.",
     "expected": 5000,
     "target_ms": 5000,
+    "explanation": "L’objectif était de 5 secondes. Un écart de 250 ms ou moins rapporte 3 points, jusqu’à 750 ms 2 points, jusqu’à 1 500 ms 1 point.",
     "type": "timing",
     "id": "demo-timing"
   },
@@ -41,6 +44,7 @@
     ],
     "clue": "🐠 🌊 🔎",
     "reward": 2,
+    "explanation": "Le poisson, l’océan et la recherche évoquent Le Monde de Nemo, où un père cherche son fils disparu.",
     "type": "emoji",
     "id": "demo-emoji"
   },
@@ -58,6 +62,7 @@
       0,
       2
     ],
+    "explanation": "3 est plus petit que 7, qui est plus petit que 12, puis 21 : 3 → 7 → 12 → 21.",
     "type": "order",
     "id": "demo-order"
   },
@@ -70,6 +75,7 @@
       "Partout avec les bons potes"
     ],
     "expected": null,
+    "explanation": "Il n’y a pas de vérité unique : les choix les plus populaires rapportent 3 points, les autres 1. En cas d’égalité, chaque groupe en tête reçoit 3 points.",
     "type": "majority",
     "id": "demo-majority"
   },
@@ -94,6 +100,7 @@
     "letter": "L",
     "theme": "Animal",
     "reward": 3,
+    "explanation": "Il fallait trouver une réponse dans la catégorie « Animal », commençant par L. Plusieurs réponses sont possibles ; l’hôte peut accepter celles qui respectent la consigne.",
     "type": "petitbac",
     "id": "demo-petitbac"
   },
@@ -104,6 +111,7 @@
     ],
     "clue": "BAS + TAUX",
     "reward": 2,
+    "explanation": "« Bas » + « taux » se prononce « bateau ». On assemble les sons.",
     "type": "rebus",
     "id": "demo-rebus"
   },
@@ -116,6 +124,7 @@
       "20"
     ],
     "expected": 2,
+    "explanation": "8, 12 et 20 sont divisibles par 2. Le nombre 15 est impair : c’est l’intrus.",
     "type": "odd",
     "id": "demo-odd"
   },
@@ -135,6 +144,7 @@
       4,
       3
     ],
+    "explanation": "On compare chaque fruit à la même position dans la suite : 5 positions correctes rapportent 3 points, au moins 3 en rapportent 2, au moins 1 rapporte 1 point.",
     "type": "memory",
     "id": "demo-memory"
   },
@@ -142,6 +152,7 @@
     "prompt": "Combien de mois y a-t-il dans trois années ?",
     "expected": 36,
     "unit": "mois",
+    "explanation": "Une année compte 12 mois : 3 × 12 = 36 mois.",
     "type": "estimate",
     "id": "demo-estimate"
   },
@@ -154,6 +165,7 @@
       "Jaune"
     ],
     "expected": 1,
+    "explanation": "Luigi porte un chapeau vert. Le chapeau rouge est celui de Mario.",
     "type": "quiz",
     "id": "demo-quiz"
   }

@@ -41,7 +41,7 @@ npm run build
 
 La sélection est mélangée sans répétition de type avant d’avoir parcouru tous les types sélectionnés. Les questions d’un même type ne sont réutilisées qu’après épuisement de leur banque.
 
-Les réponses libres sont notées automatiquement en ignorant accents, espaces et ponctuation. Elles passent ensuite devant **le tribunal des potes** : l’hôte peut accepter une variante ou une réponse valide absente du dictionnaire. Les déplacements attendent sa validation. Après chaque manche, toutes les réponses et leurs points sont visibles. À la fin de la partie, le carnet de la soirée rassemble toutes les questions, les réponses attendues et les propositions de chaque joueur. Selon la difficulté, ces questions rapportent 1 à 3 points.
+Les réponses libres sont notées automatiquement en ignorant accents, espaces et ponctuation. Elles passent ensuite devant **le tribunal des potes** : l’hôte peut accepter une variante ou une réponse valide absente du dictionnaire. Les déplacements attendent sa validation. Après chaque manche, toutes les réponses et leurs points sont visibles, avec une courte explication de la bonne réponse et du barème appliqué à chaque joueur. À la fin de la partie, le carnet de la soirée rassemble toutes les questions, les réponses attendues et les propositions de chaque joueur. Selon la difficulté, ces questions rapportent 1 à 3 points.
 
 Le chrono aveugle n’affiche **aucun décompte, barre de progression, animation périodique ou compteur de réponses**, sur le téléphone comme sur l’écran commun. Le temps mesuré n’apparaît qu’aux résultats. Une limite technique de manche reste active pour éviter un blocage. La mesure se fait sur le téléphone ; ce jeu vise des amis qui jouent loyalement.
 
@@ -67,7 +67,7 @@ Toutes les trois manches, un événement s’annonce : une pièce offerte à cha
 ## Connecter Supabase
 
 1. Créer un projet sur [Supabase](https://supabase.com/).
-2. Dans SQL Editor, exécuter dans cet ordre, **une fois chacun** : `supabase/001_party.sql`, `supabase/002_party_expansion.sql`, puis `supabase/003_content.sql` et `supabase/004_answer_history.sql`. Si la version initiale est déjà installée, exécuter 002, 003 puis 004. Si 001 à 003 sont déjà installés, exécuter seulement 004. Faire cette mise à jour entre deux soirées : les règles du plateau changent pour les salons existants.
+2. Dans SQL Editor, exécuter dans cet ordre, **une fois chacun** : `supabase/001_party.sql`, `supabase/002_party_expansion.sql`, puis `supabase/003_content.sql` et `supabase/005_explanations.sql` (ce dernier inclut aussi 004). Si la version initiale est déjà installée, exécuter 002, 003 puis 005. Si 001 à 003, ou 001 à 004, sont déjà installés, exécuter seulement 005. Faire cette mise à jour entre deux soirées : les règles du plateau changent pour les salons existants.
 3. Activer **Anonymous Sign-Ins** dans Authentication → Sign In / Providers.
 4. Copier `.env.example` en `.env.local` et compléter :
 
@@ -93,7 +93,7 @@ Dans une partie, **La soirée en grand** ouvre l’écran spectateur. Pour un au
 
 ## Ajouter des questions
 
-Modifier `content/catalog.mjs`, puis lancer :
+Modifier `content/catalog.mjs` et les explications correspondantes dans `content/explanations.mjs`, puis lancer :
 
 ```sh
 npm run content:generate
@@ -101,7 +101,7 @@ npm test
 npm run build
 ```
 
-Le générateur produit `supabase/003_content.sql` et les exemples `src/demo-content.json`. Réappliquer 003 actualise les questions par identifiant ; supprimer une entrée du fichier ne supprime pas automatiquement sa ligne en BDD. Les bonnes réponses du catalogue multijoueur ne sont pas incluses dans le bundle client. Le build vérifie que les fichiers générés sont à jour.
+Le générateur produit `supabase/003_content.sql`, la mise à jour `supabase/005_explanations.sql` et les exemples `src/demo-content.json`. Réappliquer 005 ajoute aussi les explications aux résultats et au carnet des parties déjà créées. Pendant le jeu, elles restent masquées côté serveur. Réappliquer 003 actualise les questions par identifiant ; supprimer une entrée du fichier ne supprime pas automatiquement sa ligne en BDD. Les bonnes réponses du catalogue multijoueur ne sont pas incluses dans le bundle client. Le build vérifie que les fichiers générés sont à jour.
 
 Inspirations : [K Culture](https://kculture.kgames.fr) pour la variété des épreuves et la correction collective, [Size It Up](https://sizeitup.games/) pour l’estimation visuelle. Les textes et illustrations du projet sont propres au jeu. Dimensions : [formats papier Adobe](https://www.adobe.com/uk/creativecloud/design/discover/a4-format.html) et [équipements FIBA](https://assets.fiba.basketball/image/upload/documents-corporate-fiba-official-rules-2024-official-basketball-rules-and-basketball-equipment.pdf).
 

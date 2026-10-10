@@ -12,6 +12,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Quatre"
     ],
     "expected": 2,
+    "explanation": "La pieuvre a trois cœurs : deux envoient le sang vers les branchies, le troisième vers le reste du corps.",
     "type": "quiz",
     "id": "quiz-1"
   },
@@ -24,6 +25,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "La pièce"
     ],
     "expected": 1,
+    "explanation": "L’étoile rend le pilote temporairement invincible. La banane et les carapaces sont des obstacles ou des projectiles.",
     "type": "quiz",
     "id": "quiz-2"
   },
@@ -36,6 +38,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "33"
     ],
     "expected": 2,
+    "explanation": "29 ne se divise que par 1 et par lui-même. Les autres sont divisibles par 3 : 21 = 3 × 7, 27 = 3 × 9 et 33 = 3 × 11.",
     "type": "quiz",
     "id": "quiz-3"
   },
@@ -48,6 +51,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Les pâtes"
     ],
     "expected": 1,
+    "explanation": "La tortilla espagnole classique associe des œufs et des pommes de terre. L’oignon est un ajout possible.",
     "type": "quiz",
     "id": "quiz-4"
   },
@@ -60,6 +64,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Atlantique"
     ],
     "expected": 3,
+    "explanation": "L’Atlantique se trouve entre les côtes de l’Europe et celles de l’Amérique du Nord.",
     "type": "quiz",
     "id": "quiz-5"
   },
@@ -72,6 +77,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Server"
     ],
     "expected": 1,
+    "explanation": "Le S signifie Secure. HTTPS sécurise la communication HTTP grâce à TLS.",
     "type": "quiz",
     "id": "quiz-6"
   },
@@ -84,6 +90,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Elle échange les mains"
     ],
     "expected": 1,
+    "explanation": "La carte Inversion change le sens de circulation du tour. À deux joueurs, elle agit comme une carte Passe ton tour.",
     "type": "quiz",
     "id": "quiz-7"
   },
@@ -96,6 +103,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Coldplay"
     ],
     "expected": 1,
+    "explanation": "Bohemian Rhapsody est une chanson de Queen, écrite par Freddie Mercury.",
     "type": "quiz",
     "id": "quiz-8"
   },
@@ -103,6 +111,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Combien de minutes dure une semaine entière ?",
     "expected": 10080,
     "unit": "minutes",
+    "explanation": "Une semaine compte 7 jours : 7 × 24 heures × 60 minutes = 10 080 minutes.",
     "type": "estimate",
     "id": "estimate-1"
   },
@@ -110,6 +119,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Combien de touches possède un piano standard ?",
     "expected": 88,
     "unit": "touches",
+    "explanation": "Un piano standard possède 88 touches : 52 blanches et 36 noires.",
     "type": "estimate",
     "id": "estimate-2"
   },
@@ -117,6 +127,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Combien de secondes dure une journée de 24 heures ?",
     "expected": 86400,
     "unit": "secondes",
+    "explanation": "24 heures × 60 minutes × 60 secondes = 86 400 secondes.",
     "type": "estimate",
     "id": "estimate-3"
   },
@@ -124,6 +135,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Un échiquier entier, ça fait combien de cases ?",
     "expected": 64,
     "unit": "cases",
+    "explanation": "Un échiquier comporte 8 rangées de 8 cases : 8 × 8 = 64.",
     "type": "estimate",
     "id": "estimate-4"
   },
@@ -131,6 +143,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Combien de cartes dans un jeu classique sans jokers ?",
     "expected": 52,
     "unit": "cartes",
+    "explanation": "Un jeu classique comporte 4 couleurs de 13 cartes chacune : 4 × 13 = 52, sans les jokers.",
     "type": "estimate",
     "id": "estimate-5"
   },
@@ -139,6 +152,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "expected": 20,
     "unit": "faces",
     "note": "Parfois, le piège est de chercher un piège.",
+    "explanation": "La réponse est dans la question : un dé à vingt faces, aussi appelé D20, possède 20 faces.",
     "type": "estimate",
     "id": "estimate-6"
   },
@@ -154,6 +168,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "reference_aspect": 0.705,
     "unit": "cm",
     "source": "https://www.adobe.com/uk/creativecloud/design/discover/a4-format.html",
+    "explanation": "Une feuille A4 mesure 21 × 29,7 cm. Sa hauteur est donc de 29,7 cm, contre 21 cm pour la feuille A5 de référence.",
     "type": "size",
     "id": "size-1"
   },
@@ -169,6 +184,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "reference_aspect": 0.707,
     "unit": "cm",
     "source": "https://www.adobe.com/uk/creativecloud/design/discover/a4-format.html",
+    "explanation": "Une feuille A3 mesure 29,7 × 42 cm. Elle est environ 1,41 fois aussi haute que la feuille A4 de référence.",
     "type": "size",
     "id": "size-2"
   },
@@ -185,6 +201,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "unit": "cm",
     "source": "https://assets.fiba.basketball/image/upload/documents-corporate-fiba-official-rules-2024-official-basketball-rules-and-basketball-equipment.pdf",
     "note": "On compare le diamètre intérieur du cercle à la hauteur de la feuille.",
+    "explanation": "Le diamètre intérieur de référence du cercle est de 45 cm. Cela représente environ 1,52 fois la hauteur d’une feuille A4.",
     "type": "size",
     "id": "size-3"
   },
@@ -200,6 +217,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "reference_aspect": 1,
     "unit": "cm",
     "source": "https://www.adobe.com/uk/creativecloud/design/discover/a4-format.html",
+    "explanation": "Une feuille A5 mesure 14,8 × 21 cm. Sa hauteur représente un peu moins de la moitié du diamètre de 45 cm du cercle.",
     "type": "size",
     "id": "size-4"
   },
@@ -215,6 +233,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "reference_aspect": 1,
     "unit": "cm",
     "source": "https://assets.fiba.basketball/image/upload/documents-corporate-fiba-official-rules-2024-official-basketball-rules-and-basketball-equipment.pdf",
+    "explanation": "Un panneau de basket officiel mesure 180 cm de large et 105 cm de haut. On demandait ici sa hauteur.",
     "type": "size",
     "id": "size-5"
   },
@@ -230,6 +249,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "reference_aspect": 0.707,
     "unit": "cm",
     "source": "https://www.adobe.com/uk/creativecloud/design/discover/a4-format.html",
+    "explanation": "Une feuille A6 mesure 10,5 × 14,8 cm. Elle est environ deux fois moins haute qu’une feuille A4.",
     "type": "size",
     "id": "size-6"
   },
@@ -241,6 +261,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 1,
     "theme": "Jeux vidéo",
+    "explanation": "Mario est reconnaissable à sa moustache, sa casquette rouge et aux tuyaux de ses aventures.",
     "type": "culture",
     "id": "culture-1"
   },
@@ -252,6 +273,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 1,
     "theme": "Cinéma & livres",
+    "explanation": "Harry Potter étudie à Poudlard, appelé Hogwarts dans la version anglaise.",
     "type": "culture",
     "id": "culture-2"
   },
@@ -262,6 +284,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 2,
     "theme": "Jeux vidéo",
+    "explanation": "Dans Tetris, les tétriminos s’empilent pour former des lignes complètes, qui disparaissent.",
     "type": "culture",
     "id": "culture-3"
   },
@@ -273,6 +296,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 2,
     "theme": "Musique",
+    "explanation": "Le ukulélé possède généralement quatre cordes et est associé à Hawaï. Il est plus petit qu’une guitare classique.",
     "type": "culture",
     "id": "culture-4"
   },
@@ -284,6 +308,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 3,
     "theme": "Art",
+    "explanation": "La Nuit étoilée est une œuvre de Vincent van Gogh.",
     "type": "culture",
     "id": "culture-5"
   },
@@ -294,6 +319,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 3,
     "theme": "Séries",
+    "explanation": "Central Perk est le café où les personnages de Friends se retrouvent autour du canapé.",
     "type": "culture",
     "id": "culture-6"
   },
@@ -304,6 +330,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 3,
     "theme": "Langue",
+    "explanation": "Un palindrome garde le même ordre de lettres quand on le lit à l’envers, comme « kayak » ou « radar ».",
     "type": "culture",
     "id": "culture-7"
   },
@@ -315,6 +342,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "reward": 2,
     "theme": "Fiction",
+    "explanation": "Le 221B Baker Street est l’adresse du détective fictif Sherlock Holmes.",
     "type": "culture",
     "id": "culture-8"
   },
@@ -327,6 +355,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "🦁 👑",
     "reward": 1,
+    "explanation": "Le lion et la couronne renvoient au titre Le Roi lion.",
     "type": "emoji",
     "id": "emoji-1"
   },
@@ -337,6 +366,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "🚢 🧊 💔",
     "reward": 1,
+    "explanation": "Le bateau évoque le Titanic, la glace l’iceberg, et le cœur brisé l’histoire d’amour.",
     "type": "emoji",
     "id": "emoji-2"
   },
@@ -347,6 +377,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "🐀 👨‍🍳 🇫🇷",
     "reward": 2,
+    "explanation": "Le rat, le cuisinier et la France évoquent Rémy et la cuisine parisienne de Ratatouille.",
     "type": "emoji",
     "id": "emoji-3"
   },
@@ -359,6 +390,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "🕷️ 🧑 🕸️",
     "reward": 1,
+    "explanation": "L’araignée, l’homme et la toile forment le nom Spider-Man : l’homme-araignée.",
     "type": "emoji",
     "id": "emoji-4"
   },
@@ -370,6 +402,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "🚗 ⚡ 🕰️",
     "reward": 2,
+    "explanation": "La voiture, l’électricité et l’horloge évoquent la DeLorean et les voyages dans le temps de Retour vers le futur.",
     "type": "emoji",
     "id": "emoji-5"
   },
@@ -380,6 +413,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "⛏️ 🧱 💎 🧟",
     "reward": 2,
+    "explanation": "La pioche, les blocs, les diamants et les zombies sont des éléments caractéristiques de Minecraft.",
     "type": "emoji",
     "id": "emoji-6"
   },
@@ -390,6 +424,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "CHAT + PEAU",
     "reward": 1,
+    "explanation": "« Chat » + « peau » se prononce « chapeau ». On additionne les sons, pas les lettres.",
     "type": "rebus",
     "id": "rebus-1"
   },
@@ -400,6 +435,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "PAIN + SEAU",
     "reward": 2,
+    "explanation": "« Pain » + « seau » donne le son « pinceau ».",
     "type": "rebus",
     "id": "rebus-2"
   },
@@ -410,6 +446,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "CHAT + LAIT",
     "reward": 2,
+    "explanation": "« Chat » + « lait » se prononce « chalet ».",
     "type": "rebus",
     "id": "rebus-3"
   },
@@ -420,6 +457,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "VERRE + NID",
     "reward": 2,
+    "explanation": "« Verre » + « nid » se prononce « vernis ».",
     "type": "rebus",
     "id": "rebus-4"
   },
@@ -430,6 +468,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "SCIE + TROUILLE",
     "reward": 2,
+    "explanation": "« Scie » + « trouille » se prononce « citrouille ».",
     "type": "rebus",
     "id": "rebus-5"
   },
@@ -440,6 +479,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "clue": "RAT + D’EAU",
     "reward": 2,
+    "explanation": "« Rat » + « d’eau » se prononce « radeau ».",
     "type": "rebus",
     "id": "rebus-6"
   },
@@ -472,6 +512,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "letter": "P",
     "theme": "Animal",
     "reward": 3,
+    "explanation": "Il fallait trouver une réponse dans la catégorie « Animal », commençant par P. Plusieurs réponses sont possibles ; l’hôte peut accepter celles qui respectent la consigne.",
     "type": "petitbac",
     "id": "petitbac-1"
   },
@@ -492,6 +533,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "letter": "P",
     "theme": "Fruit",
     "reward": 3,
+    "explanation": "Il fallait trouver une réponse dans la catégorie « Fruit », commençant par P. Plusieurs réponses sont possibles ; l’hôte peut accepter celles qui respectent la consigne.",
     "type": "petitbac",
     "id": "petitbac-2"
   },
@@ -518,6 +560,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "letter": "C",
     "theme": "Pays",
     "reward": 3,
+    "explanation": "Il fallait trouver une réponse dans la catégorie « Pays », commençant par C. Plusieurs réponses sont possibles ; l’hôte peut accepter celles qui respectent la consigne.",
     "type": "petitbac",
     "id": "petitbac-3"
   },
@@ -547,6 +590,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "letter": "B",
     "theme": "Ville",
     "reward": 3,
+    "explanation": "Il fallait trouver une réponse dans la catégorie « Ville », commençant par B. Plusieurs réponses sont possibles ; l’hôte peut accepter celles qui respectent la consigne.",
     "type": "petitbac",
     "id": "petitbac-4"
   },
@@ -566,6 +610,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "letter": "T",
     "theme": "Sport",
     "reward": 3,
+    "explanation": "Il fallait trouver une réponse dans la catégorie « Sport », commençant par T. Plusieurs réponses sont possibles ; l’hôte peut accepter celles qui respectent la consigne.",
     "type": "petitbac",
     "id": "petitbac-5"
   },
@@ -597,6 +642,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "letter": "C",
     "theme": "Aliment",
     "reward": 3,
+    "explanation": "Il fallait trouver une réponse dans la catégorie « Aliment », commençant par C. Plusieurs réponses sont possibles ; l’hôte peut accepter celles qui respectent la consigne.",
     "type": "petitbac",
     "id": "petitbac-6"
   },
@@ -614,6 +660,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       0,
       1
     ],
+    "explanation": "1 cm = 10 mm, 1 m = 100 cm et 1 km = 1 000 m. L’ordre est millimètre, centimètre, mètre, kilomètre.",
     "type": "order",
     "id": "order-1"
   },
@@ -631,6 +678,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       3,
       0
     ],
+    "explanation": "En partant du Soleil, ces quatre planètes sont Mercure, Vénus, Terre puis Mars.",
     "type": "order",
     "id": "order-2"
   },
@@ -648,6 +696,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       2,
       0
     ],
+    "explanation": "Dans la série A, plus le numéro augmente, plus la feuille est petite : A6, A5, A4 puis A3.",
     "type": "order",
     "id": "order-3"
   },
@@ -665,6 +714,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       3,
       1
     ],
+    "explanation": "Un tiers vaut environ 0,33 ; un demi 0,5 ; deux tiers 0,67 ; trois quarts 0,75.",
     "type": "order",
     "id": "order-4"
   },
@@ -682,6 +732,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       3,
       1
     ],
+    "explanation": "Une heure vaut 60 minutes, deux heures 120 minutes et une journée 1 440 minutes : 60, 90, 120 puis 1 440.",
     "type": "order",
     "id": "order-5"
   },
@@ -699,6 +750,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       2,
       0
     ],
+    "explanation": "On compare les lettres de gauche à droite : Abricot, Cerise, Citron puis Kiwi. « Ce » précède « Ci ».",
     "type": "order",
     "id": "order-6"
   },
@@ -712,6 +764,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     ],
     "expected": 2,
     "note": "Un palindrome se lit dans les deux sens.",
+    "explanation": "Kayak, radar et ressasser se lisent à l’identique dans les deux sens. À l’envers, « revenir » donne « rinever ».",
     "type": "odd",
     "id": "odd-1"
   },
@@ -724,6 +777,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "11"
     ],
     "expected": 2,
+    "explanation": "9 est divisible par 3 : 9 = 3 × 3. Les nombres 2, 3 et 11 ne se divisent que par 1 et par eux-mêmes.",
     "type": "odd",
     "id": "odd-2"
   },
@@ -736,6 +790,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Clarinette"
     ],
     "expected": 3,
+    "explanation": "La clarinette est un instrument à vent. Le violon, la harpe et le ukulélé produisent leur son grâce à des cordes.",
     "type": "odd",
     "id": "odd-3"
   },
@@ -748,6 +803,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Xx"
     ],
     "expected": 3,
+    "explanation": "Fe est le fer, Au l’or et Na le sodium. Xx n’est pas le symbole d’un élément chimique.",
     "type": "odd",
     "id": "odd-4"
   },
@@ -760,6 +816,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Juillet"
     ],
     "expected": 2,
+    "explanation": "Juin compte 30 jours. Mars, mai et juillet en comptent 31.",
     "type": "odd",
     "id": "odd-5"
   },
@@ -772,6 +829,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Requin"
     ],
     "expected": 3,
+    "explanation": "Le requin est un poisson. Le dauphin, la baleine et la chauve-souris sont des mammifères : ils allaitent leurs petits.",
     "type": "odd",
     "id": "odd-6"
   },
@@ -784,6 +842,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "On lance un débat de 20 minutes"
     ],
     "expected": null,
+    "explanation": "Il n’y a pas de vérité unique : les choix les plus populaires rapportent 3 points, les autres 1. En cas d’égalité, chaque groupe en tête reçoit 3 points.",
     "type": "majority",
     "id": "majority-1"
   },
@@ -796,6 +855,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Quelqu’un qui arrive en retard"
     ],
     "expected": null,
+    "explanation": "Il n’y a pas de vérité unique : les choix les plus populaires rapportent 3 points, les autres 1. En cas d’égalité, chaque groupe en tête reçoit 3 points.",
     "type": "majority",
     "id": "majority-2"
   },
@@ -808,6 +868,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Faire la vaisselle en un clic"
     ],
     "expected": null,
+    "explanation": "Il n’y a pas de vérité unique : les choix les plus populaires rapportent 3 points, les autres 1. En cas d’égalité, chaque groupe en tête reçoit 3 points.",
     "type": "majority",
     "id": "majority-3"
   },
@@ -820,6 +881,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Je prépare ma revanche"
     ],
     "expected": null,
+    "explanation": "Il n’y a pas de vérité unique : les choix les plus populaires rapportent 3 points, les autres 1. En cas d’égalité, chaque groupe en tête reçoit 3 points.",
     "type": "majority",
     "id": "majority-4"
   },
@@ -832,6 +894,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "Le pote qui ramène tout"
     ],
     "expected": null,
+    "explanation": "Il n’y a pas de vérité unique : les choix les plus populaires rapportent 3 points, les autres 1. En cas d’égalité, chaque groupe en tête reçoit 3 points.",
     "type": "majority",
     "id": "majority-5"
   },
@@ -844,6 +907,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       "On redémarre la box 12 fois"
     ],
     "expected": null,
+    "explanation": "Il n’y a pas de vérité unique : les choix les plus populaires rapportent 3 points, les autres 1. En cas d’égalité, chaque groupe en tête reçoit 3 points.",
     "type": "majority",
     "id": "majority-6"
   },
@@ -863,6 +927,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       4,
       3
     ],
+    "explanation": "On compare chaque fruit à la même position dans la suite : 5 positions correctes rapportent 3 points, au moins 3 en rapportent 2, au moins 1 rapporte 1 point.",
     "type": "memory",
     "id": "memory-1"
   },
@@ -882,6 +947,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       2,
       1
     ],
+    "explanation": "On compare chaque fruit à la même position dans la suite : 5 positions correctes rapportent 3 points, au moins 3 en rapportent 2, au moins 1 rapporte 1 point.",
     "type": "memory",
     "id": "memory-2"
   },
@@ -901,6 +967,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       0,
       5
     ],
+    "explanation": "On compare chaque fruit à la même position dans la suite : 5 positions correctes rapportent 3 points, au moins 3 en rapportent 2, au moins 1 rapporte 1 point.",
     "type": "memory",
     "id": "memory-3"
   },
@@ -920,6 +987,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
       5,
       2
     ],
+    "explanation": "On compare chaque fruit à la même position dans la suite : 5 positions correctes rapportent 3 points, au moins 3 en rapportent 2, au moins 1 rapporte 1 point.",
     "type": "memory",
     "id": "memory-4"
   },
@@ -927,6 +995,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Arrête ton chrono au plus près de 5 secondes.",
     "expected": 5000,
     "target_ms": 5000,
+    "explanation": "L’objectif était de 5 secondes. Un écart de 250 ms ou moins rapporte 3 points, jusqu’à 750 ms 2 points, jusqu’à 1 500 ms 1 point.",
     "type": "timing",
     "id": "timing-1"
   },
@@ -934,6 +1003,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Arrête ton chrono au plus près de 7 secondes.",
     "expected": 7000,
     "target_ms": 7000,
+    "explanation": "L’objectif était de 7 secondes. Un écart de 250 ms ou moins rapporte 3 points, jusqu’à 750 ms 2 points, jusqu’à 1 500 ms 1 point.",
     "type": "timing",
     "id": "timing-2"
   },
@@ -941,6 +1011,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Arrête ton chrono au plus près de 9 secondes.",
     "expected": 9000,
     "target_ms": 9000,
+    "explanation": "L’objectif était de 9 secondes. Un écart de 250 ms ou moins rapporte 3 points, jusqu’à 750 ms 2 points, jusqu’à 1 500 ms 1 point.",
     "type": "timing",
     "id": "timing-3"
   },
@@ -948,6 +1019,7 @@ select value->>'id', value->>'type', value from jsonb_array_elements($content$[
     "prompt": "Arrête ton chrono au plus près de 11 secondes.",
     "expected": 11000,
     "target_ms": 11000,
+    "explanation": "L’objectif était de 11 secondes. Un écart de 250 ms ou moins rapporte 3 points, jusqu’à 750 ms 2 points, jusqu’à 1 500 ms 1 point.",
     "type": "timing",
     "id": "timing-4"
   }

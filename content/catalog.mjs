@@ -1,3 +1,4 @@
+import {EXPLANATIONS,DEMO_EXPLANATIONS,explanationFor} from './explanations.mjs';
 // Questions et indices rédigés pour Entre potes. Pas d'extraction de banques tierces.
 const choice = (prompt, options, expected, extra = {}) => ({ prompt, options, expected, ...extra });
 const text = (prompt, expected, extra = {}) => ({ prompt, expected, ...extra });
@@ -115,3 +116,10 @@ export const DEMO = {
   estimate: text('Combien de mois y a-t-il dans trois années ?', 36, { unit: 'mois' }),
   quiz: choice('De quelle couleur est le chapeau de Luigi ?', ['Rouge', 'Vert', 'Bleu', 'Jaune'], 1),
 };
+
+for (const [type, entries] of Object.entries(BANK)) entries.forEach((entry,index)=>{
+  entry.explanation=EXPLANATIONS[type]?.[index] || explanationFor(type,entry);
+});
+for (const [type, entry] of Object.entries(DEMO)) {
+  entry.explanation=DEMO_EXPLANATIONS[type] || entry.explanation || explanationFor(type,entry);
+}
